@@ -7,7 +7,7 @@ import OrderHistoryPage from "../OrderHistoryPage.jsx/OrderHistoryPage";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   return (
     <main className="App">
