@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { signUp } from '../../utilities/users-service';
 
 export default class SignUpForm extends Component {
 	state = {
@@ -19,7 +20,23 @@ export default class SignUpForm extends Component {
 
 	handleSubmit = evt => {
 		evt.preventDefault();
-		alert(JSON.stringify(this.state));
+		try {
+			// We don't want to send the 'error' or 'confirm' property,
+			//  so let's make a copy of the state object, then delete them
+			const formData = {...this.state};
+			delete formData.error;
+			delete formData.confirm;
+
+			// The promise returned by the signUp service method
+			// will resolve to the user object included in the
+			// payload of the JSON Web Token (JWT)
+			const user = await signUp(formData);
+			// Baby step!
+			console.log(user)
+		} catch {
+			// An error occured
+			this.setState({ error: 'Sign Up Failed - Try Again' });
+		}
 	};
 
 	render() {
