@@ -1,5 +1,9 @@
-function NewOrderPage() {
-	return <h1>NewOrderPage</h1>;
+import {useState} from "react";
+
+const NewOrderPage = () => {
+  return(
+    <h1>NEW ORDER PAGE</h1>
+  )
 }
 
 export default NewOrderPage;
