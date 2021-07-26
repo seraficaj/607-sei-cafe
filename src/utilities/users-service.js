@@ -10,7 +10,7 @@ export async function signUp(userData) {
 		// Persist the "token"
 		localStorage.setItem('token', token);
 		// Baby step by returning whaterver is sent back to the server
-		return token;
+		return getUser();
 	} catch {
 		throw new Error('Invalid Sign Up');
 	}

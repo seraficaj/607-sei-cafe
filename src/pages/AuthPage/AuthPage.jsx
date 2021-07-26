@@ -1,10 +1,10 @@
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
-function AuthPage() {
+function AuthPage({ setUser }) {
 	return (
 		<main>
 			<h1>AuthPage</h1>
-			<SignUpForm />
+			<SignUpForm setUser={setUser} />
 		</main>
 	);
 }
