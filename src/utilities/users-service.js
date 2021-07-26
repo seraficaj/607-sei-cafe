@@ -9,7 +9,6 @@ export async function signUp(userData) {
 		const token = await usersAPI.signUp(userData);
 		// Persist the "token"
 		localStorage.setItem('token', token);
-		// Baby step by returning whaterver is sent back to the server
 		return getUser();
 	} catch {
 		throw new Error('Invalid Sign Up');
@@ -37,5 +36,18 @@ export function getUser() {
 }
 
 export function logOut() {
-	localStorage.removeItem('token')
+	localStorage.removeItem('token');
+}
+
+export async function login(credentials) {
+	try {
+		// Delegate the network request code to the users-api.js API module
+		// which will ultimately return a JSON Web Token (JWT)
+		const token = await usersAPI.login(credentials);
+		// Persist the "token"
+		localStorage.setItem('token', token);
+		return getUser();
+	} catch {
+		throw new Error('Invalid Login');
+	}
 }
