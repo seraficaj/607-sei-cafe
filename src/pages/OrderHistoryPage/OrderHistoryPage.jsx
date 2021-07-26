@@ -1,6 +1,9 @@
+import * as usersService from '../../utilities/users-service';
+
 function OrderHistoryPage() {
 	async function handleCheckToken() {
-		alert('clicked');
+		const expDate = await usersService.checkToken();
+		console.log(expDate);
 	}
 
 	return (

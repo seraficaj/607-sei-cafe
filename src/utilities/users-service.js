@@ -51,3 +51,7 @@ export async function login(credentials) {
 		throw new Error('Invalid Login');
 	}
 }
+
+export function checkToken() {
+	alert('clicked');
+}
