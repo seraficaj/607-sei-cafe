@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 // We can call any exported function with this import as userService
 import * as usersService from '../../utilities/users-service';
@@ -10,6 +11,9 @@ function NavBar({ user, setUser }) {
 		// Update the state will also cause a re-render
 		setUser(null);
 	}
+=======
+import {NavLink} from 'react-router-dom';
+>>>>>>> 316da06db16768fcb2d2baf251edba5db8c79c7d
 
 	return (
 		<nav>
