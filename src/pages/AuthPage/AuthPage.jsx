@@ -1,12 +1,13 @@
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
+import {useState} from "react";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
 
-function AuthPage() {
-	return (
-		<main>
-			<h1>AuthPage</h1>
-			<SignUpForm />
-		</main>
-	);
+const AuthPage = () => {
+  return(
+    <main>
+    <h1>AUTH PAGE</h1>
+    <SignUpForm />
+    </main>
+  )
 }
 
 export default AuthPage;

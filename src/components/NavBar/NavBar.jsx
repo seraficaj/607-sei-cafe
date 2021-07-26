@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
-function NavBar() {
-	return <nav>
-        <Link to="/orders">Order History</Link>
-        &nbsp; | &nbsp;
-        <Link to="/orders/new">New Order</Link>
-    </nav>;
-}
+
+const NavBar = () => {
+  return(
+    <nav>
+      <NavLink to="/orders">Order History</NavLink>
+      &nbsp; | &nbsp;
+      <NavLink to="/orders/new">New Order</NavLink>
+    </nav>
+  )
+};
 
 export default NavBar;
