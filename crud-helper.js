@@ -10,3 +10,4 @@ const User = require('./models/user');
 
 // Local variables will come in handy
 let u, i, c, o;
+
