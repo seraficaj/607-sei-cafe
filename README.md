@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# SEI CAFE for SEIR-607
+
+## .env File Properties:
+
+- DATABASE_URL
+
+## Loading crud-helper.js
+- enter node REPL: `node`
+- load crud-helper.js: `.load crud-helper.js`
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
