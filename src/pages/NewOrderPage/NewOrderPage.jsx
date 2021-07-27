@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import * as itemsApi from '../../utilities/items-api';
 
 export default function NewOrderPage() {
 	const [menuItems, setMenuItems] = useState([]);
 
 	useEffect(() => {
-		console.log("NewOrderPage Rendered");
-	});
-
-	useEffect(() => {
-		console.log("useEffect with dependency array ran!");
-	}, [menuItems]);
+    async function getItems() {
+      const items = await itemsApi.getAll();
+      setMenuItems(items);
+    }
+    getItems();
+	}, []);
 
 	return (
 		<>
