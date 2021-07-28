@@ -20,13 +20,11 @@ async function cart(req, res) {
 }
 
 async function addToCart(req, res) {
-	console.log('adding item to cart ', req.user, req.params)
 	// Add the item to the cart
 	const cart = await Order.getCart(req.user._id);
-	console.log('cart ', cart)
 	// The promise resolves to the document, which we already have in the cart variable,
 	// so no need to create another variable...
-	await cart.addItemToCart(req.params._id);
+	await cart.addItemToCart(req.params.id);
 	res.json(cart);
 }
 
