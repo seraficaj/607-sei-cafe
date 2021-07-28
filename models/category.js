@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema(
@@ -7,11 +7,11 @@ const categorySchema = new Schema(
 			type: String,
 			required: true,
 		},
-		sort: Number,
+		sortOrder: Number,
 	},
 	{
 		timestamps: true,
 	}
 );
 
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model('Category', categorySchema);

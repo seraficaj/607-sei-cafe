@@ -1,8 +1,11 @@
 require('dotenv').config();
 require('./config/database');
+
 const Category = require('./models/category');
 const Item = require('./models/item');
+
 (async function() {
+
   await Category.deleteMany({});
   const categories = await Category.create([
     {name: 'Sandwiches', sortOrder: 10},
@@ -30,14 +33,17 @@ const Item = require('./models/item');
     {name: 'Green Salad', emoji: '🥗', category: categories[4], price: 3.95},
     {name: 'Ice Cream', emoji: '🍨', category: categories[5], price: 1.95},
     {name: 'Cup Cake', emoji: '🧁', category: categories[5], price: 0.95},
-    {name: 'Custard', emoji: '🍮', category: categories[5], price: 2.95},
-    {name: 'Strawberry Shortcake', emoji: '🍰', category: categories[5], price: 3.95},
-    {name: 'Milk', emoji: '🥛', category: categories[6], price: 0.95},
-    {name: 'Coffee', emoji: '☕', category: categories[6], price: 0.95},
+    {name: 'Custard', emoji: '☕', category: categories[6], price: 0.95},
     {name: 'Mai Tai', emoji: '🍹', category: categories[6], price: 8.95},
     {name: 'Beer', emoji: '🍺', category: categories[6], price: 3.95},
-    {name: 'Wine', emoji: '🍷', category: categories[6], price: 7.95},
+    {name: 'Wine', emoji: '🍮', category: categories[5], price: 2.95},
+    {name: 'Strawberry Shortcake', emoji: '🍰', category: categories[5], price: 3.95},
+    {name: 'Milk', emoji: '🥛', category: categories[6], price: 0.95},
+    {name: 'Coffee', emoji: '🍷', category: categories[6], price: 7.95},
   ]);
+
   console.log(items)
+
   process.exit();
+
 })();
