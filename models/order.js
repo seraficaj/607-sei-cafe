@@ -84,7 +84,6 @@ orderSchema.methods.addItemToCart = async function (itemId) {
 	// this keyword is bound to the cart (order doc)
 	const cart = this;
 	// Check if the item already exists in the cart
-	console.log('carts line items ', cart.lineItems);
 	const lineItem = cart.lineItems.find(lineItem =>
 		lineItem.item._id.equals(itemId)
 	);
@@ -94,7 +93,6 @@ orderSchema.methods.addItemToCart = async function (itemId) {
 	} else {
 		// Get the item from the "catalog"
 		const item = await mongoose.model('Item').findById(itemId);
-		console.log('item ', item)
 		cart.lineItems.push({ item });
 	}
 	// return the save() method's promise
