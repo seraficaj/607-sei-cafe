@@ -42,8 +42,8 @@ export default function NewOrderPage({ user, setUser }) {
 
 	/*--- Event Handlers --- */
 	async function handleAddToOrder(itemId) {
-		// Baby step
-		alert(`add item: ${itemId}`)
+		const cart = await ordersAPI.addItemToCart(itemId);
+		setCart(cart);
 	}
 
 	return (

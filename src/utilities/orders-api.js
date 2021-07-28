@@ -10,6 +10,7 @@ export function getCart() {
 // Retrieve an unpaid order for the logged in user
 export function addItemToCart(itemId) {
   // Just send itemId for best security (no pricing)
+  console.log(itemId)
   return sendRequest(`${BASE_URL}/cart/items/${itemId}`, 'POST');
 }
 
