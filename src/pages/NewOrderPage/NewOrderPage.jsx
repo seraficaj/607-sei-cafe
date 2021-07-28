@@ -46,6 +46,11 @@ export default function NewOrderPage({ user, setUser }) {
 		setCart(cart);
 	}
 
+	async function handleChangeQty(itemId, newQty) {
+		const cart = await ordersAPI.setItemQtyInCart(itemId, newQty);
+		setCart(cart);
+	}
+
 	return (
 		<main className='NewOrderPage'>
 			<aside>
@@ -66,7 +71,7 @@ export default function NewOrderPage({ user, setUser }) {
 				)}
 				handleAddToOrder={handleAddToOrder}
 			/>
-			<OrderDetail order={cart} />
+			<OrderDetail order={cart} handleChangeQty={handleChangeQty} />
 		</main>
 	);
 }
