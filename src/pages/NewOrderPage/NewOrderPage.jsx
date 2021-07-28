@@ -59,7 +59,7 @@ export default function NewOrderPage({ user, setUser }) {
 					item => item.category.name === activeCat
 				)}
 			/>
-			<OrderDetail />
+			<OrderDetail order={cart} />
 		</main>
 	);
 }
