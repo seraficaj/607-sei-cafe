@@ -51,12 +51,26 @@ orderSchema.virtual('orderTotal').get(function () {
 	return this.lineItems.reduce((total, item) => total + item.extPrice, 0);
 });
 // totalQty: Used to compute the total number of items in the order, taking quantity into consideration.
-orderSchema.virtual('totalQty').get(function() {
+orderSchema.virtual('totalQty').get(function () {
 	return this.lineItems.reduce((total, item) => total + item.qty, 0);
 });
 // orderId: Used to compute a user friendly order id from the lengthy _id of the order document.
 orderSchema.virtual('orderId').get(function () {
 	return this.id.slice(-6).toUpperCase();
 });
+
+// statics are callable on the model, not the instance (document)
+orderSchema.statics.getCart = async function (userId) {
+	// 'this' is bound to the model (don't use an arrow function)
+	// return the promise that resolves to a cart (the user's unpaid order)
+	return this.findOneAndUpdate(
+		// query
+		{ user: userId, isPaid: false },
+		// update  - in the case the order (cart) is upserted
+		{ user: userId },
+		// upsert option creates the doc if it doesn't exist!
+		{ upsert: true, new: true }
+	);
+};
 
 module.exports = mongoose.model('Order', orderSchema);

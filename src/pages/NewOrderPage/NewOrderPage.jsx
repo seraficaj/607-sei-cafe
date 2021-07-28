@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import * as itemsAPI from '../../utilities/items-api';
+import * as ordersAPI from '../../utilities/orders-api';
 // Add the component imports
 import './NewOrderPage.css';
 import { Link } from 'react-router-dom';
@@ -13,6 +14,7 @@ export default function NewOrderPage({ user, setUser }) {
 	const [menuItems, setMenuItems] = useState([]);
 	// Add state to track the "active" category
 	const [activeCat, setActiveCat] = useState('');
+	const [cart, setCart] = useState(null);
 
 	// Create and initialize the ref to an empty array
 	const categoriesRef = useRef([]);
@@ -29,6 +31,13 @@ export default function NewOrderPage({ user, setUser }) {
 			setActiveCat(items[0].category.name);
 		}
 		getItems();
+
+		// Load cart (a cart is the unpaid order for the logged in user)
+		async function getCart() {
+			const cart = await ordersAPI.getCart();
+			setCart(cart);
+		}
+		getCart();
 	}, []);
 
 	return (
