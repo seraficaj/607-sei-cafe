@@ -40,6 +40,12 @@ export default function NewOrderPage({ user, setUser }) {
 		getCart();
 	}, []);
 
+	/*--- Event Handlers --- */
+	async function handleAddToOrder(itemId) {
+		// Baby step
+		alert(`add item: ${itemId}`)
+	}
+
 	return (
 		<main className='NewOrderPage'>
 			<aside>
@@ -58,6 +64,7 @@ export default function NewOrderPage({ user, setUser }) {
 				menuItems={menuItems.filter(
 					item => item.category.name === activeCat
 				)}
+				handleAddToOrder={handleAddToOrder}
 			/>
 			<OrderDetail order={cart} />
 		</main>
