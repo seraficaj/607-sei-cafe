@@ -43,7 +43,26 @@ const orderSchema = new Schema(
 	},
 	{
 		timestamps: true,
+    toJSON: {
+			virtuals: true,
+		}
 	}
 );
+
+orderSchema.virtual('orderTotal').get(function() {
+  return this.lineItems.reduce((total, item) => {
+    return total + item.extPrice
+  }, 0);
+});
+
+orderSchema.virtual('totalQty').get(function() {
+  return this.lineItems.reduce((total, item) => {
+    return total + item.qty
+  }, 0);
+});
+
+orderSchema.virtual('orderId').get(function() {
+  return this.id.slice(-6).toUpperCase();
+});
 
 module.exports = mongoose.model('Order', orderSchema);
