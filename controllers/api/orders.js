@@ -11,6 +11,11 @@ module.exports = {
 async function cart(req, res) {
 	// A cart is the unpaid order for a user
 	const cart = await Order.getCart(req.user._id);
+	// below is how we could get a cart without static methods
+	// let cart = await Order.findOne({ user: req.user._id, isPaid: false });
+	// if (!cart) {
+	// 	cart = await Order.create({ user: req.user._id });
+	// }
 	res.json(cart);
 }
 
