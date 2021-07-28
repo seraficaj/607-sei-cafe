@@ -49,6 +49,7 @@ const orderSchema = new Schema(
 	}
 );
 
+<<<<<<< HEAD
 orderSchema.virtual('orderTotal').get(function() {
   return this.lineItems.reduce((total, item) => {
     return total + item.extPrice
@@ -63,6 +64,19 @@ orderSchema.virtual('totalQty').get(function() {
 
 orderSchema.virtual('orderId').get(function() {
   return this.id.slice(-6).toUpperCase();
+=======
+// orderTotal: Used to compute the total of the order.
+orderSchema.virtual('orderTotal').get(function () {
+	return this.lineItems.reduce((total, item) => total + item.extPrice, 0);
+});
+// totalQty: Used to compute the total number of items in the order, taking quantity into consideration.
+orderSchema.virtual('totalQty').get(function() {
+	return this.lineItems.reduce((total, item) => total + item.qty, 0);
+});
+// orderId: Used to compute a user friendly order id from the lengthy _id of the order document.
+orderSchema.virtual('orderId').get(function () {
+	return this.id.slice(-6).toUpperCase();
+>>>>>>> afd44323d308c67561d5fb785c6c56376ee93c4e
 });
 
 module.exports = mongoose.model('Order', orderSchema);
