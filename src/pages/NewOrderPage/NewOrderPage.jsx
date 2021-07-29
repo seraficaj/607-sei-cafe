@@ -3,7 +3,7 @@ import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
 // Add the component imports
 import './NewOrderPage.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Logo from '../../components/Logo/Logo';
 import MenuList from '../../components/MenuList/MenuList';
 import CategoryList from '../../components/CategoryList/CategoryList';
@@ -18,6 +18,9 @@ export default function NewOrderPage({ user, setUser }) {
 
 	// Create and initialize the ref to an empty array
 	const categoriesRef = useRef([]);
+
+	// Use history object to change routes programmatically
+	const history = useHistory();
 
 	useEffect(() => {
 		async function getItems() {
@@ -51,6 +54,11 @@ export default function NewOrderPage({ user, setUser }) {
 		setCart(cart);
 	}
 
+	async function handleCheckout() {
+		await ordersAPI.checkout();
+		history.push('/orders');
+	}
+
 	return (
 		<main className='NewOrderPage'>
 			<aside>
@@ -71,7 +79,11 @@ export default function NewOrderPage({ user, setUser }) {
 				)}
 				handleAddToOrder={handleAddToOrder}
 			/>
-			<OrderDetail order={cart} handleChangeQty={handleChangeQty} />
+			<OrderDetail
+				order={cart}
+				handleChangeQty={handleChangeQty}
+				handleCheckout={handleCheckout}
+			/>
 		</main>
 	);
 }
